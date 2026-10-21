@@ -3,6 +3,7 @@ const { body, param, query, validationResult } = require("express-validator");
 const StellarSdk = require("@stellar/stellar-sdk");
 const authMiddleware = require("../middleware/auth");
 const idempotency = require("../middleware/idempotency");
+const { readLimiter } = require("../middleware/rateLimiter");
 const { create, confirm, cancel, getEscrow, listEscrows } = require("../controllers/agentEscrowController");
 
 const validate = (req, res, next) => {
